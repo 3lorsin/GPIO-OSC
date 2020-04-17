@@ -8,7 +8,7 @@
                 messages = document.createElement('ul');
 
 	ws.onopen = function(e) {
-	  ws.send('{ "command":"/test/command" , "value":"1", "ip":"127.0.0.1", "port":"5005" }');
+	  ws.send('{ "type":"button_press", "data":"button_3" }');
 	};
 
 	
