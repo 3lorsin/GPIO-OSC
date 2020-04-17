@@ -15,7 +15,8 @@
 
  ### Installing
 
- TODO: Add more info here.
+ TODO:
+	- Configuration possibility https://pymotw.com/2/ConfigParser/
 
  ## Versioning
 
