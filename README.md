@@ -24,4 +24,5 @@
  ## Acknowledgments
 
    - GPIO Button Reference: [https://raspberrypi.stackexchange.com/questions/76342/run-a-shell-script-from-a-python-script-when-a-button-is-pressed](https://raspberrypi.stackexchange.com/questions/76342/run-a-shell-script-from-a-python-script-when-a-button-is-pressed)
+   - Function Calling Reference: [https://stackoverflow.com/questions/1186789/what-is-the-best-way-to-call-a-script-from-another-script](https://stackoverflow.com/questions/1186789/what-is-the-best-way-to-call-a-script-from-another-script)
    
