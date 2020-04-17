@@ -22,8 +22,6 @@
  This project uses [SemVer](http://semver.org/) for versioning.
 
  ## Acknowledgments
- Update This Later
 
-   - Hat tip to anyone whose code was used
-   - Inspiration
-   - etc
+   - GPIO Button Reference: [https://raspberrypi.stackexchange.com/questions/76342/run-a-shell-script-from-a-python-script-when-a-button-is-pressed](https://raspberrypi.stackexchange.com/questions/76342/run-a-shell-script-from-a-python-script-when-a-button-is-pressed)
+   
