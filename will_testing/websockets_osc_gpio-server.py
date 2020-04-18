@@ -28,7 +28,7 @@ def send_OSC(json_raw):
 
 		client = udp_client.SimpleUDPClient(args.ip, args.port)
 
-		client.send_message(data["command"], 1)
+		client.send_message(data["command"], data["value"])
 
 	print('OSC Command Received: '+ json_raw);
 
@@ -44,9 +44,9 @@ def send_OSC(json_raw):
 
 async def hello(websocket, path):
 	ws_command = await websocket.recv()
-	
+
 	#######################################
-	# handle message                      #
+	# message handling                    #
 	# type: (button press, configure).    #
 	# data: (JSON DATA (config), string)  #
 	#######################################
@@ -66,14 +66,14 @@ async def hello(websocket, path):
 		if ws_json['data'] == "button_2": send_OSC(button_2)
 		if ws_json['data'] == "button_3": send_OSC(button_3)
 		if ws_json['data'] == "button_4": send_OSC(button_4)
-		
-	
+
+
 	#handle configuration edits here
 	if (ws_json['type'] == 'configure'):
 
 		return
 
-	
+
 
 	response = "Command Sent: "+ws_command
 
