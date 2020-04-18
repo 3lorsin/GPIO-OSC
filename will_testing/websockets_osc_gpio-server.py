@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 
 # WS server that sends messages at random intervals
@@ -11,6 +12,31 @@ import time
 import json
 
 from pythonosc import udp_client
+from configparser import ConfigParser, ExtendedInterpolation
+
+################
+# ConfigParser #
+################
+
+config = ConfigParser(interpolation=ExtendedInterpolation())
+config.read('config.ini')
+
+
+def update_config(section, option, value):
+        config.set(section, option, value)
+        with open('./dev.ini', 'w') as f:
+              config.write(f)
+
+print(config.sections())
+
+#Update Config and save
+#update_config("settings", "ip", "8.8.8.8")
+
+################
+# ConfigParser #
+################
+
+
 
 ############
 # Send OSC #
@@ -31,6 +57,7 @@ def send_OSC(json_raw):
 		client.send_message(data["command"], data["value"])
 
 	print('OSC Command Received: '+ json_raw);
+	getsetting()
 
 ############
 # Send OSC #
@@ -57,9 +84,9 @@ async def hello(websocket, path):
 	if (ws_json['type'] == 'button_press'):
 
 		# Temp Config
-		button_1 = '{ "command":"/ch/01/mix/st" , "value":"1", "ip":"127.0.0.1", "port":"5005" }'
+		button_1 = '{ "command":"/LS/Go/PB/10" , "value":0, "ip":"192.168.2.69", "port":"5005" }'
 		button_2 = '{ "command":"/ch/02/mix/st" , "value":"1", "ip":"127.0.0.1", "port":"5005" }'
-		button_3 = '{ "command":"/ch/03/mix/st" , "value":"1", "ip":"127.0.0.1", "port":"5005" }'
+		button_3 = '{ "command":"/ch/03/mix/st" , "value":"1", "ip":"192.168.2.1", "port":"5005" }'
 		button_4 = '{ "command":"/ch/04/mix/st" , "value":"1", "ip":"127.0.0.1", "port":"5005" }'
 
 		if ws_json['data'] == "button_1": send_OSC(button_1)
@@ -70,8 +97,8 @@ async def hello(websocket, path):
 
 	#handle configuration edits here
 	if (ws_json['type'] == 'configure'):
-
-		return
+                config_raw = json.loads(ws_json['data']);
+                update_config(config_raw['section'], config_raw['option'], config_raw['value'])
 
 
 
@@ -81,7 +108,7 @@ async def hello(websocket, path):
 
 
 
-start_websocket_server = websockets.serve(hello, "127.0.0.1", 5678)
+start_websocket_server = websockets.serve(hello, "192.168.2.2", 5678)
 
 
 #############
