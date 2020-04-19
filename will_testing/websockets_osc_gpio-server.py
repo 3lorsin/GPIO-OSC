@@ -14,11 +14,12 @@ from pythonosc import udp_client
 from configparser import ConfigParser, ExtendedInterpolation
 
 ################
-# ConfigParser #
+# Config #
 ################
 
-config = ConfigParser(interpolation=ExtendedInterpolation())
-config.read('config.ini')
+with open('config.json') as config_file:
+    config = json.load(config_file)
+#print(config['button_1']['commands'])
 
 
 def update_config(section, option, value):
@@ -27,13 +28,13 @@ def update_config(section, option, value):
               config.write(f)
               print(config.get("settings", "ip"))
 
-print(config.sections())
-
-#Update Config and save
-update_config("settings", "ip", "8.8.8.8")
+# print(config.sections())
+#
+# #Update Config and save
+# update_config("settings", "ip", "8.8.8.8")
 
 ################
-# ConfigParser #
+# Config #
 ################
 
 
@@ -43,20 +44,20 @@ update_config("settings", "ip", "8.8.8.8")
 ############
 
 def send_OSC(json_raw):
-	data = json.loads(json_raw)
-	if __name__ == "__main__":
-		parser = argparse.ArgumentParser()
-		parser.add_argument("--ip", default=data["ip"],
-		help="The ip of the OSC server")
-		parser.add_argument("--port", type=int, default=data["port"],
-		help="The port the OSC server is listening on")
-		args = parser.parse_args()
+    data = json.loads(json_raw)
+    if __name__ == "__main__":
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--ip", default=data["ip"],
+        help="The ip of the OSC server")
+        parser.add_argument("--port", type=int, default=data["port"],
+        help="The port the OSC server is listening on")
+        args = parser.parse_args()
 
-		client = udp_client.SimpleUDPClient(args.ip, args.port)
+        client = udp_client.SimpleUDPClient(args.ip, args.port)
 
-		client.send_message(data["command"], data["value"])
+        client.send_message(data["command"], data["value"])
 
-	print('OSC Command Received: '+ json_raw);
+    print('OSC Command Received: '+ json_raw);
 
 ############
 # Send OSC #
@@ -87,13 +88,13 @@ async def hello(websocket, path):
 		button_number = ws_json['data'][0]['button']
 		button_state = ws_json['data'][0]['state']
 		print(button_number)
-		button_commands = config[button_number]["commands"]
+		button_commands = config['buttons'][button_number]["commands"]
         # Run each command
 		for x in button_commands:
-			current_command = config.get(x, "command")
-			current_value   = config.get(x, button_state)
-			current_ip      = config.get(x, "ip")
-			current_port    = config.get(x, "port")
+			current_command = config['commands'][x]["command"]
+			current_value   = config['commands'][x][button_state]
+			current_ip      = config['commands'][x]["ip"]
+			current_port    = config['commands'][x]["port"]
             # if command state is null, do not run
 			if (current_value != "null"):
 			    send_OSC('{ "command":"'+ current_command + '" , "value":'+ current_value+', "ip":"'+current_ip+'", "port":"'+current_port+'" }')
