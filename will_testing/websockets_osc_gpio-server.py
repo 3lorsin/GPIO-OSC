@@ -75,7 +75,7 @@ async def hello(websocket, path):
 	#######################################
 	# message handling                    #
 	# type: (button press, configure).    #
-	# data: (JSON DATA (config), string)  #
+	# data: (JSON DATA)  #
 	#######################################
 
 	ws_json = json.loads(ws_command);
@@ -83,28 +83,25 @@ async def hello(websocket, path):
 
 	if (ws_json['type'] == 'button_press'):
 
-		# Temp Config
-		# button_1 = '{ "command":"/LS/Go/PB/10" , "value":0, "ip":"192.168.2.69", "port":"5005" }'
-		# button_2 = '{ "command":"/ch/02/mix/st" , "value":"1", "ip":"127.0.0.1", "port":"5005" }'
-		# button_3 = '{ "command":"/ch/03/mix/st" , "value":"1", "ip":"192.168.2.1", "port":"5005" }'
-		# button_4 = '{ "command":"/ch/04/mix/st" , "value":"1", "ip":"127.0.0.1", "port":"5005" }'
-        #
-		# if ws_json['data'] == "button_1": send_OSC(button_1)
-		# if ws_json['data'] == "button_2": send_OSC(button_2)
-		# if ws_json['data'] == "button_3": send_OSC(button_3)
-		# if ws_json['data'] == "button_4": send_OSC(button_4)
-		button_command = config.get(ws_json['data'], "command")
-		button_value   = config.get(ws_json['data'], "value")
-		button_ip      = config.get(ws_json['data'], "ip")
-		button_port    = config.get(ws_json['data'], "port")
-		send_OSC('{ "command":"'+ button_command + '" , "value":'+ button_value+', "ip":"'+button_ip+'", "port":"'+button_port+'" }')
-
+        # Get button and state
+		button_number = ws_json['data'][0]['button']
+		button_state = ws_json['data'][0]['state']
+		button_commands = json.loads(config.get(button_number, "commands"))
+        # Run each command
+		for x in button_commands:
+			current_command = config.get(x, "command")
+			current_value   = config.get(x, button_state)
+			current_ip      = config.get(x, "ip")
+			current_port    = config.get(x, "port")
+            # if command state is null, do not run
+			if (current_value != "null"):
+			    send_OSC('{ "command":"'+ current_command + '" , "value":'+ current_value+', "ip":"'+current_ip+'", "port":"'+current_port+'" }')
+			    print("Command Executed" + x)
 
 	#handle configuration edits here
 	if (ws_json['type'] == 'configure'):
-                #print("winning")
                 update_config(ws_json['data'][0]['section'], ws_json['data'][0]['option'], ws_json['data'][0]['value'])
-                #print(ws_json['data'][0]['ip'])
+                print("Configuration Edited")
 
 	response = "Command Sent: "+ws_command
 
@@ -118,10 +115,6 @@ start_websocket_server = websockets.serve(hello, "192.168.2.2", 5678)
 #############
 # WEBSOCKET #
 #############
-
-
-
-
 
 
 asyncio.get_event_loop().run_until_complete(start_websocket_server)
