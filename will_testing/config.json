@@ -1,6 +1,8 @@
 {
 	"settings": {
-		"ip": "9.9.9.9"
+		"ip": "9.9.9.9",
+		"WebUIName" : "SHOT DOWN CONTROL"
+		"footer" : "GPIO-OSC 2020"
 	},
 	"buttons": {
 		"button_1": {

@@ -1,5 +1,5 @@
  # GPIO-OSC
- 
+
  Send OSC Messages with RPi GPIO Triggers
 
  ## Getting Started
@@ -16,7 +16,16 @@
  ### Installing
 
  TODO:
-	- Configuration possibility https://pymotw.com/2/ConfigParser/
+	- Ability to edit config
+  - GPIO Integration
+  - Fix Websocket disconnect error
+  - Send config to WEBUI on WS.connect
+  - Use config to populate WebUI
+  - Create devices to commands fire to device instead of saving ip and port on every command
+  - GPIO Config to assign button
+  - Define buttons a WebUI display name
+  - Update Prerequisites
+
 
  ## Versioning
 
@@ -26,4 +35,3 @@
 
    - GPIO Button Reference: [https://raspberrypi.stackexchange.com/questions/76342/run-a-shell-script-from-a-python-script-when-a-button-is-pressed](https://raspberrypi.stackexchange.com/questions/76342/run-a-shell-script-from-a-python-script-when-a-button-is-pressed)
    - Function Calling Reference: [https://stackoverflow.com/questions/1186789/what-is-the-best-way-to-call-a-script-from-another-script](https://stackoverflow.com/questions/1186789/what-is-the-best-way-to-call-a-script-from-another-script)
-   
