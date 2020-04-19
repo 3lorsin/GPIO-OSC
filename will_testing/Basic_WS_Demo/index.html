@@ -4,14 +4,18 @@
 	</head>
 	<body>
         <script>
-            var ws = new WebSocket("ws://127.0.0.1:5678/"),
+            var ws = new WebSocket("ws://192.168.2.2:5678/"),
                 messages = document.createElement('ul');
 
 	ws.onopen = function(e) {
-	  ws.send('{ "type":"button_press", "data":"button_3" }');
+	  ws.send('{ "type":"button_press", "data": [{ "button":"button_1", "state":"off"}] }');
 	};
 
-	
+	// ws.onopen = function(e) {
+	//   ws.send('{ "type": "configure", "data": [{ "section":"settings", "option":"ip", "value":"0.0.0.0" }] }');
+	// };
+
+
 	ws.onmessage = function (event) {
 		var messages = document.getElementsByTagName('ul')[0],
 		message = document.createElement('li'),
