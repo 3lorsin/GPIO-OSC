@@ -86,7 +86,8 @@ async def hello(websocket, path):
         # Get button and state
 		button_number = ws_json['data'][0]['button']
 		button_state = ws_json['data'][0]['state']
-		button_commands = json.loads(config.get(button_number, "commands"))
+		print(button_number)
+		button_commands = config[button_number]["commands"]
         # Run each command
 		for x in button_commands:
 			current_command = config.get(x, "command")
