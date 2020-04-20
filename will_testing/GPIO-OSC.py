@@ -75,11 +75,13 @@ def button_pressed(button_number, button_state):
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(16,GPIO.IN)
 GPIO.setup(15,GPIO.IN)
+GPIO.setup(18,GPIO.IN)
 
 
 
 B1_state = 0
 B2_state = 0
+B3_state = 0
 try:
     while True:
         if GPIO.input(16) == 1 and B1_state == 0:
@@ -101,6 +103,16 @@ try:
             print("Button_2 Off")
             button_pressed("button_2", "off")
             B2_state = 0
+            time.sleep(.1)
+        if GPIO.input(18) == 1 and B3_state == 0:
+            print("Button_3 On")
+            button_pressed("button_3", "on")
+            B3_state = 1
+            time.sleep(.1)
+        if GPIO.input(18) == 0 and B3_state == 1:
+            print("Button_3 Off")
+            button_pressed("button_3", "off")
+            B3_state = 0
             time.sleep(.1)
 finally:
     #cleanup the GPIO pins before ending

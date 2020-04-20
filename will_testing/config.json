@@ -10,6 +10,9 @@
 		},
 		"button_2": {
 			"commands": ["command_1", "command_2"]
+		},
+		"button_3": {
+			"commands": ["command_1", "command_2"]
 		}
 	},
 	"commands": {
