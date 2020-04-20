@@ -80,31 +80,32 @@ GPIO.setup(15,GPIO.IN)
 
 B1_state = 0
 B2_state = 0
-try:
-    while True:
-        if GPIO.input(16) == 1 and B1_state == 0:
-            print("Button_1 On")
-            button_pressed("button_1", "on")
-            B1_state = 1
-            time.sleep(.1)
-        if GPIO.input(16) == 0 and B1_state == 1:
-            print("Button_1 Off")
-            button_pressed("button_1", "off")
-            B1_state = 0
-            time.sleep(.1)
-        if GPIO.input(15) == 1 and B2_state == 0:
-            print("Button_2 On")
-            button_pressed("button_2", "on")
-            B2_state = 1
-            time.sleep(.1)
-        if GPIO.input(15) == 0 and B2_state == 1:
-            print("Button_2 Off")
-            button_pressed("button_2", "off")
-            B2_state = 0
-            time.sleep(.1)
-finally:
-    #cleanup the GPIO pins before ending
-    GPIO.cleanup()
+async def buttons():
+    try:
+        while True:
+            if GPIO.input(16) == 1 and B1_state == 0:
+                print("Button_1 On")
+                button_pressed("button_1", "on")
+                B1_state = 1
+                time.sleep(.1)
+            if GPIO.input(16) == 0 and B1_state == 1:
+                print("Button_1 Off")
+                button_pressed("button_1", "off")
+                B1_state = 0
+                time.sleep(.1)
+            if GPIO.input(15) == 1 and B2_state == 0:
+                print("Button_2 On")
+                button_pressed("button_2", "on")
+                B2_state = 1
+                time.sleep(.1)
+            if GPIO.input(15) == 0 and B2_state == 1:
+                print("Button_2 Off")
+                button_pressed("button_2", "off")
+                B2_state = 0
+                time.sleep(.1)
+    finally:
+        #cleanup the GPIO pins before ending
+        GPIO.cleanup()
 
 ########
 # GPIO #
@@ -164,3 +165,4 @@ start_websocket_server = websockets.serve(hello, "192.168.2.2", 5678)
 
 asyncio.get_event_loop().run_until_complete(start_websocket_server)
 asyncio.get_event_loop().run_forever()
+asyncio.run_until_complete(buttons)
