@@ -22,8 +22,9 @@ function button_pressed(button_name) {
 function button_released(button_name) {
   ws.send('{ "type":"button_press", "data": [{ "button":"' + button_name + '", "state":"off"}] }');
 }
-
-
+// function getConfig(){
+// ws.send('{ "type":"sendConfig", "data": "" }');
+// }
 
 ws.onmessage = function (event) {
 
@@ -36,4 +37,4 @@ ws.onmessage = function (event) {
 // message.appendChild(content);
 // messages.appendChild(message);
 };
-document.body.appendChild(messages);
+// document.body.appendChild(messages);
