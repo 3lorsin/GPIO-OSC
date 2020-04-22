@@ -1,11 +1,5 @@
 #!/usr/bin/env python
 
-# WS server that sends messages at random intervals
-
-import asyncio
-import datetime
-import random
-import websockets
 import argparse
 import time
 import json
@@ -13,7 +7,6 @@ import RPi.GPIO as GPIO
 import time
 
 from pythonosc import udp_client
-from configparser import ConfigParser, ExtendedInterpolation
 
 ##########
 # Config #
@@ -21,8 +14,6 @@ from configparser import ConfigParser, ExtendedInterpolation
 
 with open('config.json') as config_file:
     config = json.load(config_file)
-#print(config['button_1']['commands'])
-
 
 ##########
 # Config #
@@ -111,7 +102,6 @@ try:
 finally:
     #cleanup the GPIO pins before ending
     GPIO.cleanup()
-
 
 ########
 # GPIO #
