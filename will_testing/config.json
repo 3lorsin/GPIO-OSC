@@ -4,47 +4,199 @@
 		"WebUIName" : "SHOT DOWN CONTROL",
 		"footer" : "GPIO-OSC 2020"
 	},
-	"buttons": {
-		"button_1": {
-			"commands": ["command_1", "command_2"]
+	"commands": {
+		"1": {
+			"command": "/LS/Go/PB/10",
+			"on": "0",
+			"off": "null",
+			"device": "LightShark"
 		},
-		"button_2": {
-			"commands": ["command_1", "command_2"]
+		"2": {
+			"command": "/LS/Go/PB/10",
+			"on": "0",
+			"off": "null",
+			"device": "LightShark"
 		},
-		"button_3": {
-			"commands": ["command_1", "command_2"]
+		"3": {
+			"command": "/LS/Go/PB/10",
+			"on": "0",
+			"off": "null",
+			"device": "LightShark"
+		},
+		"4": {
+			"command": "/LS/Go/PB/10",
+			"on": "0",
+			"off": "null",
+			"device": "LightShark"
 		}
 	},
-	"commands": {
-		"command_1": {
-			"command": "/LS/Go/PB/10",
-			"on": "0",
-			"off": "null",
+	"osc_devices": {
+		"LightShark": {
 			"ip": "192.168.2.69",
 			"port": "5005"
 		},
-		"command_2": {
-			"command": "/LS/Go/PB/10",
-			"on": "0",
-			"off": "null",
-			"ip": "192.168.2.69",
-			"port": "5005"
-		},
-		"command_3": {
-			"command": "/LS/Go/PB/10",
-			"on": "0",
-			"off": "null",
-			"ip": "192.168.2.69",
-			"port": "5005"
-		},
-		"command_4": {
-			"command": "/LS/Go/PB/10",
-			"on": "0",
-			"off": "null",
+		"x32-FOH": {
 			"ip": "192.168.2.69",
 			"port": "5005"
 		}
+	},
+	"GPIO": {
+		"R1-1": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"8",
+			"commands":["1","2"]
+		},
+		"R1-2": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"12",
+			"commands":["1","2"]
+		},
+		"R1-3": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"16",
+			"commands":["1",""]
+		},
+		"R1-4": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"18",
+			"commands":["",""]
+		},
+		"R1-5": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"22",
+			"commands":["",""]
+		},
+		"R1-6": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"24",
+			"commands":["",""]
+		},
+		"R1-LED": {
+			"GPIO-type": "0",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"26",
+			"commands":["",""]
+		},
+		"R2-1": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"3",
+			"commands":["",""]
+		},
+		"R2-2": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"5",
+			"commands":["",""]
+		},
+		"R2-3": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"7",
+			"commands":["",""]
+		},
+		"R2-4": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"11",
+			"commands":["",""]
+		},
+		"R2-5": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"13",
+			"commands":["",""]
+		},
+		"R2-6": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"15",
+			"commands":["",""]
+		},
+		"R2-LED": {
+			"GPIO-type": "0",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"19",
+			"commands":["",""]
+		},
+		"R3-1": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"21",
+			"commands":["",""]
+		},
+		"R3-2": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"23",
+			"commands":["",""]
+		},
+		"R3-3": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"29",
+			"commands":["",""]
+		},
+		"R3-4": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"31",
+			"commands":["",""]
+		},
+		"R3-5": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"33",
+			"commands":["",""]
+		},
+		"R3-6": {
+			"GPIO-type": "1",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"35",
+			"commands":["",""]
+		},
+		"R3-LED": {
+			"GPIO-type": "0",
+			"Display-Name": "",
+			"LED-IND": "40",
+			"GPIO-Port":"37",
+			"commands":["",""]
+		},
+		"WillTest-LED": {
+			"GPIO-type": "0",
+			"Display-Name": "",
+			"LED-IND": "0",
+			"GPIO-Port":"40",
+			"commands":["",""]
+		}
 	}
+
 
 
 }
