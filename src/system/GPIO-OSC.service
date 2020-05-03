@@ -1,0 +1,10 @@
+[Unit]
+Description=GPIO-OSC Script Service
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 /var/www/html/GPIO-OSC.py
+
+[Install]
+WantedBy=multi-user.target

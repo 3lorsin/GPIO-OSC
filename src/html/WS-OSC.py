@@ -18,7 +18,7 @@ GPIOState = Client(('localhost', 11211))
 # Config #
 ##########
 
-with open('config.json') as config_file:
+with open('/var/www/html/config.json') as config_file:
     config = json.load(config_file)
 
 ##########
@@ -26,7 +26,7 @@ with open('config.json') as config_file:
 ##########
 
 #Pause so the GPIO-OSC.py has time to build the memcache
-time.sleep(30)
+time.sleep(15)
 
 ###############
 # Send Output #
