@@ -13,21 +13,13 @@
  - :exclamation:[Wiring Reference](/docs/#)
 
 
- ### TODO:
-  - **Move Remaining TODO to Github Issues**
-  - Ability to edit config
-  - GPIO Integration
-  - Fix Websocket disconnect error
-  - Send config to WEBUI on WS.connect
-  - Use config to populate WebUI
-  - Create devices to commands fire to device instead of saving ip and port on every command
-  - GPIO Config to assign button
-  - Define buttons a WebUI display name
-
-
  ## Versioning
 
  This project uses [SemVer](http://semver.org/) for versioning.
+
+ ## License
+
+ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
 
  ## Acknowledgments
 
